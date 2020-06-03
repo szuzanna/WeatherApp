@@ -12,12 +12,29 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var Author_data: UITextField!
     
+    @IBOutlet weak var WeatherTable: UITableView!
+    @IBOutlet weak var Location: UITextField!
+    @IBOutlet weak var WeatherImg: UIImageView!
+    @IBOutlet weak var Date: UITextField!
+    
+    var url : URL!
+    var dataTask : URLSessionDataTask!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        downloadWeather()
+        updateUIData()
     }
-
-
+    
+    func downloadWeather(){
+        
+    }
+    
+    func updateUIData(){
+        
+    }
+    
 }
 
-∑
+
