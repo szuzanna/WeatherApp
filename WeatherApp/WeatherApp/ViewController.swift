@@ -9,30 +9,86 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var Author_data: UITextField!
-    
-    @IBOutlet weak var WeatherTable: UITableView!
-    @IBOutlet weak var Location: UITextField!
     @IBOutlet weak var WeatherImg: UIImageView!
+    //dane pogodowe
+    @IBOutlet weak var Location: UITextField!
     @IBOutlet weak var Date: UITextField!
+    @IBOutlet weak var Status: UITextField!
+    @IBOutlet weak var MinTemp: UITextField!
+    @IBOutlet weak var MaxTemp: UITextField!
+    @IBOutlet weak var Rain: UITextField!
+    @IBOutlet weak var WindDir: UITextField!
+    @IBOutlet weak var WindSpeed: UITextField!
+    @IBOutlet weak var Preasure: UITextField!
     
-    var url : URL!
-    var dataTask : URLSessionDataTask!
+    @IBOutlet weak var NextButt: UIButton!
+    @IBOutlet weak var PrevButt: UIButton!
+    var currentPage : Int = 0
+    var dateOfMeasurement: [[String:Any]] = []
+    
+    @IBAction func onClickNextButton(_ sender: Any){
+        self.currentPage += 1
+        if self.currentPage == self.dateOfMeasurement.count{
+            self.NextButt.isEnabled = false
+        }
+        self.updateUIData(self.currentPage)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        downloadWeather()
-        updateUIData()
+        //downloadWeather()
+        //updateUIData()
+        let url = URL(string: "https://www.metaweather.com/api/location/search/?query=London")!
+        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in guard let data = data else {return}
+            
+            let json_ = try? JSONSerialization.jsonObject(with: data, options: [])
+            let unwrap_json = json_!
+            let array_json = unwrap_json as! [Any]
+            let casted_json = array_json[0] as! [String:Any]
+            
+            let woeid = String((casted_json["woeid"] as! Int))
+            let url_for_city = URL(string: "https://www.metaweather.com/api/location/" + woeid)!
+            
+            let locTask = URLSession.shared.dataTask(with: url_for_city){(data,response,error) in guard let data = data else {return}
+                let jsonRs = try? JSONSerialization.jsonObject(with: data, options: [])
+            
+                let un_json = jsonRs!
+                let cast_json = un_json as! [String:Any]
+            
+                let weather = cast_json["consolidated_weather"]!
+                let weather_ = weather as! [Any]
+            
+                DispatchQueue.main.async {
+                    self.dateOfMeasurement = weather_ as! [[String:Any]]
+                    self.updateUIData(0)
+                
+                }
+            }
+            locTask.resume()
+        }
+        task.resume()
     }
     
-    func downloadWeather(){
-        
-    }
     
-    func updateUIData(){
-        
+    func updateUIData(_ pageNumber: Int){
+        if (pageNumber < self.dateOfMeasurement.count && pageNumber >= 0){
+            let day = self.dateOfMeasurement[pageNumber]
+            self.Date.text = (day["applicable_date"] as! String)
+            self.Preasure.text = NSString(format: "%.1f", (day["air_pressure"] as! Double))as String
+            self.Status.text = (day["weather_state_name"] as! String)
+            
+            let url = URL(string: "https://www.metaweather.com/static/img/weather/png/sn.png")// + (day["weather_state_abbr"] as! String) + ".png")
+            
+            let session = URLSession.shared.dataTask(with: url!, completionHandler: {data, response, error in DispatchQueue.main.async {
+                guard let data = data else {return}
+                
+                self.WeatherImg.image = UIImage(data: data)
+                }})
+            session.resume()
+        }
     }
     
 }
