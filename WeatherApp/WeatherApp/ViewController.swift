@@ -28,20 +28,31 @@ class ViewController: UIViewController {
     var currentPage : Int = 0
     var dateOfMeasurement: [[String:Any]] = []
     
-    @IBAction func onClickNextButton(_ sender: Any){
+    @IBAction func onClickNextButton(_ sender: UIButton){
         self.currentPage += 1
-        if self.currentPage == self.dateOfMeasurement.count{
+        if self.currentPage == self.dateOfMeasurement.count - 1 {
             self.NextButt.isEnabled = false
         }
+        
+        self.PrevButt.isEnabled = true
         self.updateUIData(self.currentPage)
     }
+    
+    @IBAction func onClickPrevButt(_ sender: Any){
+        self.currentPage -= 1
+        if self.currentPage == 0 {
+            self.PrevButt.isEnabled = false
+        }
+        
+        self.NextButt.isEnabled = true
+        self.updateUIData(self.currentPage)    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         //downloadWeather()
         //updateUIData()
-        let url = URL(string: "https://www.metaweather.com/api/location/search/?query=London")!
+        let url = URL(string: "https://www.metaweather.com/api/location/search/?query=Warsaw")!
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in guard let data = data else {return}
             
             let json_ = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -76,11 +87,18 @@ class ViewController: UIViewController {
     func updateUIData(_ pageNumber: Int){
         if (pageNumber < self.dateOfMeasurement.count && pageNumber >= 0){
             let day = self.dateOfMeasurement[pageNumber]
-            self.Date.text = (day["applicable_date"] as! String)
-            self.Preasure.text = NSString(format: "%.1f", (day["air_pressure"] as! Double))as String
-            self.Status.text = (day["weather_state_name"] as! String)
             
-            let url = URL(string: "https://www.metaweather.com/static/img/weather/png/sn.png")// + (day["weather_state_abbr"] as! String) + ".png")
+            self.Location.text = "Warsaw"
+            self.Date.text = (day["applicable_date"] as! String)
+            self.Status.text = (day["weather_state_name"] as! String)
+            self.WindDir.text = (day["wind_direction_compass"] as! String)
+            self.Preasure.text = (NSString(format: "%.1f", (day["air_pressure"] as! Double))as String) + " mbar"
+            self.MinTemp.text = (NSString(format: "%.1f", (day["min_temp"] as! Double))as String) + " C"
+            self.MaxTemp.text = (NSString(format: "%.1f", (day["max_temp"] as! Double))as String) + " C"
+            self.WindSpeed.text = (NSString(format: "%.1f", (day["wind_speed"] as! Double))as String) + " mph"
+            self.Rain.text = (NSString(format: "%.1f", (day["humidity"] as! Double))as String) + " %"
+
+            let url = URL(string: "https://www.metaweather.com/static/img/weather/png/" + (day["weather_state_abbr"] as! String) + ".png")
             
             let session = URLSession.shared.dataTask(with: url!, completionHandler: {data, response, error in DispatchQueue.main.async {
                 guard let data = data else {return}
