@@ -29,28 +29,28 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UgX-4R-x5x">
-                                        <rect key="frame" x="0.0" y="38.5" width="343" height="151"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="343" height="152"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="dCh-iO-fai">
-                                        <rect key="frame" x="0.0" y="197.5" width="343" height="388"/>
+                                        <rect key="frame" x="0.0" y="198.5" width="343" height="387"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="yAT-0X-xIM">
-                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="388"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="387"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bzL-5Y-AeG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="28.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBU-hb-XwH">
-                                                        <rect key="frame" x="0.0" y="39.5" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="40" width="177.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0u-Rf-Mtl">
-                                                        <rect key="frame" x="0.0" y="79.5" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="80" width="177.5" height="28.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -62,61 +62,61 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Temp. max" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hg5-ZO-y5o">
-                                                        <rect key="frame" x="0.0" y="159.5" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="159.5" width="177.5" height="28.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Wind speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvS-Jb-TSY">
-                                                        <rect key="frame" x="0.0" y="199.5" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="199" width="177.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Wind direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhL-jo-DsO">
-                                                        <rect key="frame" x="0.0" y="239.5" width="177.5" height="28.5"/>
+                                                        <rect key="frame" x="0.0" y="239" width="177.5" height="28.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Humidity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QnJ-v8-Brr">
-                                                        <rect key="frame" x="0.0" y="279" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="278.5" width="177.5" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Atmospheric Preassure" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTo-ej-fN3">
-                                                        <rect key="frame" x="0.0" y="319" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="318.5" width="177.5" height="28.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VX8-Rl-9sJ">
-                                                        <rect key="frame" x="0.0" y="359" width="177.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="358" width="177.5" height="29"/>
                                                         <state key="normal" title="Prev day"/>
                                                         <connections>
-                                                            <action selector="onClickPrevButt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PYu-ub-1BD"/>
+                                                            <action selector="PrevDay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7WM-SK-7Vt"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="JiO-a9-Nsf">
-                                                <rect key="frame" x="198.5" y="0.0" width="144.5" height="388"/>
+                                                <rect key="frame" x="198.5" y="0.0" width="144.5" height="387"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Weather condition" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sdh-HQ-s64">
-                                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="28.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dd.mm.yyyy" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FX6-Cv-Inx">
-                                                        <rect key="frame" x="0.0" y="39.5" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="40" width="144.5" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2un-ba-Bbg">
-                                                        <rect key="frame" x="0.0" y="79.5" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="80" width="144.5" height="28.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -128,40 +128,40 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SvZ-eW-itn">
-                                                        <rect key="frame" x="0.0" y="159.5" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="159.5" width="144.5" height="28.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMD-4k-rTT">
-                                                        <rect key="frame" x="0.0" y="199.5" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="199" width="144.5" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g94-MQ-hxb">
-                                                        <rect key="frame" x="0.0" y="239.5" width="144.5" height="28.5"/>
+                                                        <rect key="frame" x="0.0" y="239" width="144.5" height="28.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ftK-rH-ofa">
-                                                        <rect key="frame" x="0.0" y="279" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="278.5" width="144.5" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCu-DH-TGE">
-                                                        <rect key="frame" x="0.0" y="319" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="318.5" width="144.5" height="28.5"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khj-O1-GvI">
-                                                        <rect key="frame" x="0.0" y="359" width="144.5" height="29"/>
+                                                        <rect key="frame" x="0.0" y="358" width="144.5" height="29"/>
                                                         <state key="normal" title="Next day"/>
                                                         <connections>
-                                                            <action selector="onClickNextButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7xl-gs-aO4"/>
+                                                            <action selector="NextDay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u2J-9z-NJj"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

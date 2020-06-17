@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     var currentPage : Int = 0
     var dateOfMeasurement: [[String:Any]] = []
     
-    @IBAction func onClickNextButton(_ sender: UIButton){
+    @IBAction func NextDay(_ sender: UIButton){
         self.currentPage += 1
         if self.currentPage == self.dateOfMeasurement.count - 1 {
             self.NextButt.isEnabled = false
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         self.updateUIData(self.currentPage)
     }
     
-    @IBAction func onClickPrevButt(_ sender: Any){
+    @IBAction func PrevDay(_ sender: Any){
         self.currentPage -= 1
         if self.currentPage == 0 {
             self.PrevButt.isEnabled = false
@@ -52,60 +52,54 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //downloadWeather()
         //updateUIData()
-        let url = URL(string: "https://www.metaweather.com/api/location/search/?query=Warsaw")!
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in guard let data = data else {return}
+        let getCityUrl = URL(string: "https://www.metaweather.com/api/location/search/?query=Warsaw")!
+        let getCityID = URLSession.shared.dataTask(with: getCityUrl) {(data, response, error) in guard let data = data else {return}
             
-            let json_ = try? JSONSerialization.jsonObject(with: data, options: [])
-            let unwrap_json = json_!
-            let array_json = unwrap_json as! [Any]
-            let casted_json = array_json[0] as! [String:Any]
+            let jsonLocation = try? JSONSerialization.jsonObject(with: data, options: [])
+            let dictLocation = ((jsonLocation!) as! [Any])[0] as! [String:Any]
             
-            let woeid = String((casted_json["woeid"] as! Int))
-            let url_for_city = URL(string: "https://www.metaweather.com/api/location/" + woeid)!
+            let woeid = String((dictLocation["woeid"] as! Int))
+            let getWeatherFromCityID = URL(string: "https://www.metaweather.com/api/location/" + woeid)!
             
-            let locTask = URLSession.shared.dataTask(with: url_for_city){(data,response,error) in guard let data = data else {return}
-                let jsonRs = try? JSONSerialization.jsonObject(with: data, options: [])
+            let getWeatherDetails = URLSession.shared.dataTask(with: getWeatherFromCityID){(data,response,error) in guard let data = data else {return}
+                let allJsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
             
-                let un_json = jsonRs!
-                let cast_json = un_json as! [String:Any]
-            
-                let weather = cast_json["consolidated_weather"]!
-                let weather_ = weather as! [Any]
+                let weather = (((allJsonResponse!) as! [String:Any])["consolidated_weather"]) as! [Any]
             
                 DispatchQueue.main.async {
-                    self.dateOfMeasurement = weather_ as! [[String:Any]]
+                    self.dateOfMeasurement = weather as! [[String:Any]]
                     self.updateUIData(0)
                 
                 }
             }
-            locTask.resume()
+            getWeatherDetails.resume()
         }
-        task.resume()
+        getCityID.resume()
     }
     
     
     func updateUIData(_ pageNumber: Int){
-        if (pageNumber < self.dateOfMeasurement.count && pageNumber >= 0){
-            let day = self.dateOfMeasurement[pageNumber]
+        if (pageNumber < self.dateOfMeasurement.count ){
+            let currentDay = self.dateOfMeasurement[pageNumber]
             
             self.Location.text = "Warsaw"
-            self.Date.text = (day["applicable_date"] as! String)
-            self.Status.text = (day["weather_state_name"] as! String)
-            self.WindDir.text = (day["wind_direction_compass"] as! String)
-            self.Preasure.text = (NSString(format: "%.1f", (day["air_pressure"] as! Double))as String) + " mbar"
-            self.MinTemp.text = (NSString(format: "%.1f", (day["min_temp"] as! Double))as String) + " C"
-            self.MaxTemp.text = (NSString(format: "%.1f", (day["max_temp"] as! Double))as String) + " C"
-            self.WindSpeed.text = (NSString(format: "%.1f", (day["wind_speed"] as! Double))as String) + " mph"
-            self.Rain.text = (NSString(format: "%.1f", (day["humidity"] as! Double))as String) + " %"
+            self.Date.text = (currentDay["applicable_date"] as! String)
+            self.Status.text = (currentDay["weather_state_name"] as! String)
+            self.WindDir.text = (currentDay["wind_direction_compass"] as! String)
+            self.Preasure.text = (NSString(format: "%.1f", (currentDay["air_pressure"] as! Double))as String) + " mbar"
+            self.MinTemp.text = (NSString(format: "%.1f", (currentDay["min_temp"] as! Double))as String) + " C"
+            self.MaxTemp.text = (NSString(format: "%.1f", (currentDay["max_temp"] as! Double))as String) + " C"
+            self.WindSpeed.text = (NSString(format: "%.1f", (currentDay["wind_speed"] as! Double))as String) + " mph"
+            self.Rain.text = (NSString(format: "%.1f", (currentDay["humidity"] as! Double))as String) + " %"
 
-            let url = URL(string: "https://www.metaweather.com/static/img/weather/png/" + (day["weather_state_abbr"] as! String) + ".png")
+            let pngUrl = URL(string: "https://www.metaweather.com/static/img/weather/png/" + (currentDay["weather_state_abbr"] as! String) + ".png")
             
-            let session = URLSession.shared.dataTask(with: url!, completionHandler: {data, response, error in DispatchQueue.main.async {
+            let getImage = URLSession.shared.dataTask(with: pngUrl!, completionHandler: {data, response, error in DispatchQueue.main.async {
                 guard let data = data else {return}
                 
                 self.WeatherImg.image = UIImage(data: data)
                 }})
-            session.resume()
+            getImage.resume()
         }
     }
     
