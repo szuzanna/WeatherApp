@@ -7,24 +7,73 @@
 //
 
 import UIKit
+import CoreData
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController,NSFetchedResultsControllerDelegate {
     
     var locationList = [
-        ("Osaka", "15015370"),
-    ("Hudston", "2424766"),
-    ("Moscow", "2122265")
+        ("London", "44418",[]),
+    ("San Francisco", "2487956",[]),
+    ("Moscow", "2122265",[])
     ]
+    var flag:Int! = 0
+    var weatherToDisp:[(String,String)] = []
+    var dateOfMeasurement: [[String:Any]] = []
+    //var managedObjectContext: NSManagedObjectContext? = nil
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //let group1 = DispatchGroup()
+        //group1.enter()
+        //DispatchQueue.main.async {
+            self.fromIDGetWether()
+            //group1.leave()
+        //}
+            //if self.flag != tmp{
+        //group1.notify(queue: .main) {
+            //self.flag = 1
+            //self.tableView.reloadData()
+                //self.flag = tmp
+            //}
+        //}
+        //fromIDGetWether()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    func fromIDGetWether(){
+        //let group2 = DispatchGroup()
+        //group2.enter()
+        for location in self.locationList{
+            let getWeatherFromCityID = URL(string: "https://www.metaweather.com/api/location/" + location.1)!
+            
+            let getWeatherDetails = URLSession.shared.dataTask(with: getWeatherFromCityID){data,response,error in guard let data = data else {return}
+            let allJsonResponse = try? JSONSerialization.jsonObject(with: data, options: [])
+                
+            let weather = (((allJsonResponse!) as! [String:Any])["consolidated_weather"]) as! [Any]
+                //group2.enter()
+                DispatchQueue.main.async() {
+                    self.dateOfMeasurement = weather as! [[String:Any]]
+                    self.weatherToDisp.append(((NSString(format: "%.1f", (self.dateOfMeasurement[0]["the_temp"] as! Double))as String), self.dateOfMeasurement[0]["weather_state_abbr"] as! String))
+                    self.tableView.reloadData()
+                    self.flag += 1
+                    //return 1
+                    //group2.leave()
+                }
+            }
+            getWeatherDetails.resume()
+        }
+        
+        //group2.notify(queue: .global){
+        //group2.wait()
+        
+       // }
+        //return nil
+    }
+    
     // MARK: - Table view data source
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,10 +91,24 @@ class MasterViewController: UITableViewController {
         //let cellIdentifier = "City"
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "City", for: indexPath) 
+        let pngUrl : URL!
         // Configure the cell...
         cell.tag = indexPath.row
-        cell.detailTextLabel?.text = "12C"
+        
         cell.textLabel?.text = locationList[indexPath.row].0
+        if flag != self.locationList.count {
+            cell.detailTextLabel?.text = "0"
+            pngUrl = URL(string: "https://www.metaweather.com/static/img/weather/ico/c.ico")!
+        }else {
+            cell.detailTextLabel?.text = weatherToDisp[indexPath.row].0
+            pngUrl = URL(string: "https://www.metaweather.com/static/img/weather/ico/" + weatherToDisp[indexPath.row].1 + ".ico" )!
+        }
+        
+        let getImage = URLSession.shared.dataTask(with: pngUrl!, completionHandler: {data, response, error in DispatchQueue.main.async {
+            guard let data = data else {return}
+            cell.imageView!.image = UIImage(data: data)
+            }})
+        getImage.resume()
         return cell
     }
     /*
@@ -57,10 +120,10 @@ class MasterViewController: UITableViewController {
     }
  */
     // Override to support conditional editing of the table view.
-    //override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-       // return true
-    //}
+        return true
+    }
     
 
     /*

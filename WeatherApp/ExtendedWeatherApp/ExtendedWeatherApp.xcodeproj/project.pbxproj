@@ -12,6 +12,7 @@
 		3F16876A247E46CA00ADB276 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F168768247E46CA00ADB276 /* WeatherApp.xcdatamodeld */; };
 		3F16876C247E46CF00ADB276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F16876B247E46CF00ADB276 /* Assets.xcassets */; };
 		3F16876F247E46CF00ADB276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F16876D247E46CF00ADB276 /* LaunchScreen.storyboard */; };
+		3FA795BF24BA9AFD00EBE620 /* MySplitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA795BE24BA9AFD00EBE620 /* MySplitController.swift */; };
 		3FB5B9B024B63A67001C0C08 /* UploadeWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B9AF24B63A67001C0C08 /* UploadeWeather.swift */; };
 		3FB5B9B224B6517C001C0C08 /* LocationWeatherConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5B9B124B6517C001C0C08 /* LocationWeatherConroller.swift */; };
 		3FDEFF45249A030B0019A861 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEFF44249A030B0019A861 /* MasterViewController.swift */; };
@@ -25,6 +26,7 @@
 		3F16876B247E46CF00ADB276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F16876E247E46CF00ADB276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3F168770247E46CF00ADB276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FA795BE24BA9AFD00EBE620 /* MySplitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySplitController.swift; sourceTree = "<group>"; };
 		3FB5B9AF24B63A67001C0C08 /* UploadeWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadeWeather.swift; sourceTree = "<group>"; };
 		3FB5B9B124B6517C001C0C08 /* LocationWeatherConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWeatherConroller.swift; sourceTree = "<group>"; };
 		3FDEFF44249A030B0019A861 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				3FDEFF44249A030B0019A861 /* MasterViewController.swift */,
 				3F168761247E46CA00ADB276 /* AppDelegate.swift */,
+				3FA795BE24BA9AFD00EBE620 /* MySplitController.swift */,
 				3F168765247E46CA00ADB276 /* Main.storyboard */,
 				3FB5B9B124B6517C001C0C08 /* LocationWeatherConroller.swift */,
 				3F16876B247E46CF00ADB276 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 			files = (
 				3F16876A247E46CA00ADB276 /* WeatherApp.xcdatamodeld in Sources */,
 				3FB5B9B224B6517C001C0C08 /* LocationWeatherConroller.swift in Sources */,
+				3FA795BF24BA9AFD00EBE620 /* MySplitController.swift in Sources */,
 				3FB5B9B024B63A67001C0C08 /* UploadeWeather.swift in Sources */,
 				3F168762247E46CA00ADB276 /* AppDelegate.swift in Sources */,
 				3FDEFF45249A030B0019A861 /* MasterViewController.swift in Sources */,

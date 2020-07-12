@@ -53,6 +53,13 @@ class LocationWeatherController: UIViewController {
         self.NextButt.isEnabled = true
         self.updateUIData(self.currentPage)    }
     
+    var detailItem: Any? {
+        didSet {
+            // Update the view.
+            viewDidLoad()        }
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let woeid = id
